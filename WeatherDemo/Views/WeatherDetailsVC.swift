@@ -23,8 +23,20 @@ class WeatherDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = ScreenTitle.weatherdetails.rawValue
+        
+        setUpTableUI()
+        
         loadDatafromWeatherAPI()
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpTableUI()  {
+        tblCityDetail.estimatedRowHeight = 44
+        tblCityDetail.separatorStyle = .singleLine
+        
+        tblCityDetail.rowHeight = UITableViewAutomaticDimension
+        
+        tblCityDetail.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tblCityDetail.frame.size.width, height: 0))
     }
     
     func loadDatafromWeatherAPI() {
@@ -41,7 +53,7 @@ class WeatherDetailsVC: UIViewController {
                 print(result)
                 let weatherObj = WeatherDataModel(result)
                 strongSelf.weatherDataArray.append(weatherObj)
-                //strongSelf.tblCityDetail.reloadData()
+                strongSelf.tblCityDetail.reloadData()
                 break
             case .failure:
                 Utility.showAlert(strMessage: server_error, Onview: strongSelf)
@@ -70,3 +82,24 @@ class WeatherDetailsVC: UIViewController {
      */
     
 }
+
+extension WeatherDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weatherDataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let weatherData = weatherDataArray[indexPath.row]
+        let weatherViewModel = WeatherViewModel(weatherData)
+        return weatherViewModel.cellInstance(tableView, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let weatherData = weatherDataArray[indexPath.row]
+        let weatherViewModel = WeatherViewModel(weatherData)
+        weatherViewModel.tapCell(tableView, indexPath: indexPath)
+    }
+}
+
+
