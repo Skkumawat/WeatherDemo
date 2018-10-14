@@ -20,7 +20,7 @@ class LocationVC: UIViewController {
     @IBOutlet weak var btnSaveLocation: UIButton!
     
     fileprivate var locationManager: CLLocationManager!
-    let city = CitiyModel()
+    let location = LocationModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +66,16 @@ class LocationVC: UIViewController {
         let location = CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
         
         LocationManager.getAddressFromLatitudeLongitude(location: location) { address in
-            self.city.address = address!
-            self.city.latitude = newCoordinate.latitude
-            self.city.longitude = newCoordinate.longitude
+            self.location.address = address!
+            self.location.latitude = newCoordinate.latitude
+            self.location.longitude = newCoordinate.longitude
             self.lblLocation.text = "latitude: \(newCoordinate.latitude) \nlongitude: \(newCoordinate.longitude) \nAddress: \(address ?? "")"
         }
         
     }
     
     @IBAction func btnSavePressed(){
-        CoreDataManager.saveAddressData(cityData: city)
+        CoreDataManager.saveAddressData(locationData: location)
         
         self.navigationController?.popViewController(animated: true)
 
@@ -121,9 +121,9 @@ extension LocationVC: CLLocationManagerDelegate {
             
             LocationManager.getAddressFromLatitudeLongitude(location: location) { address in
                 
-                self.city.address = address!
-                self.city.latitude = location.coordinate.latitude
-                self.city.longitude = location.coordinate.longitude
+                self.location.address = address!
+                self.location.latitude = location.coordinate.latitude
+                self.location.longitude = location.coordinate.longitude
                 
                 self.lblLocation.text = "latitude: \(location.coordinate.latitude) \nlongitude: \(location.coordinate.longitude) \nAddress: \(address ?? "")"
             }

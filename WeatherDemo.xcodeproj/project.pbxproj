@@ -10,7 +10,9 @@
 		6FD034E7E7CFE689C50FD5AD /* Pods_WeatherDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2B2970B6A598313F712002 /* Pods_WeatherDemoTests.framework */; };
 		8022A3F021734C3300E1CB46 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3EF21734C3300E1CB46 /* Utility.swift */; };
 		8022A3F3217360B800E1CB46 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3F2217360B800E1CB46 /* CoreDataManager.swift */; };
-		8022A3F52173610500E1CB46 /* CitiyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3F42173610500E1CB46 /* CitiyModel.swift */; };
+		8022A3F52173610500E1CB46 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3F42173610500E1CB46 /* LocationModel.swift */; };
+		8022A3F721736AD700E1CB46 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3F621736AD700E1CB46 /* LocationTableCell.swift */; };
+		8022A3FA2173702E00E1CB46 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3F92173702E00E1CB46 /* String.swift */; };
 		8027935021725D4D002D0632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027934F21725D4D002D0632 /* AppDelegate.swift */; };
 		8027935821725D4D002D0632 /* WeatherDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8027935621725D4D002D0632 /* WeatherDemo.xcdatamodeld */; };
 		8027935A21725D4D002D0632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8027935921725D4D002D0632 /* Assets.xcassets */; };
@@ -62,7 +64,9 @@
 		7B74FB349B6820F9FFA55243 /* Pods-WeatherDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemo/Pods-WeatherDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8022A3EF21734C3300E1CB46 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8022A3F2217360B800E1CB46 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		8022A3F42173610500E1CB46 /* CitiyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiyModel.swift; sourceTree = "<group>"; };
+		8022A3F42173610500E1CB46 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		8022A3F621736AD700E1CB46 /* LocationTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableCell.swift; sourceTree = "<group>"; };
+		8022A3F92173702E00E1CB46 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8027934C21725D4D002D0632 /* WeatherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027934F21725D4D002D0632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8027935721725D4D002D0632 /* WeatherDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherDemo.xcdatamodel; sourceTree = "<group>"; };
@@ -140,6 +144,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		8022A3F82173700D00E1CB46 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8022A3F92173702E00E1CB46 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8027934321725D4D002D0632 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +177,7 @@
 		8027934E21725D4D002D0632 /* WeatherDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8022A3F82173700D00E1CB46 /* Extensions */,
 				8022A3F1217360A900E1CB46 /* CoreData */,
 				8027939D21725F32002D0632 /* Models */,
 				8027939321725EFF002D0632 /* Views */,
@@ -244,6 +257,7 @@
 		8027939821725EFF002D0632 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				8022A3F621736AD700E1CB46 /* LocationTableCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -251,7 +265,7 @@
 		8027939D21725F32002D0632 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8022A3F42173610500E1CB46 /* CitiyModel.swift */,
+				8022A3F42173610500E1CB46 /* LocationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -573,8 +587,10 @@
 				8027939C21725EFF002D0632 /* HomeVC.swift in Sources */,
 				8027938721725EDF002D0632 /* StaticMessages.swift in Sources */,
 				8027939B21725EFF002D0632 /* SettingsVC.swift in Sources */,
+				8022A3F721736AD700E1CB46 /* LocationTableCell.swift in Sources */,
 				8027939921725EFF002D0632 /* LocationVC.swift in Sources */,
-				8022A3F52173610500E1CB46 /* CitiyModel.swift in Sources */,
+				8022A3F52173610500E1CB46 /* LocationModel.swift in Sources */,
+				8022A3FA2173702E00E1CB46 /* String.swift in Sources */,
 				8027938821725EDF002D0632 /* NSObjectExtension.swift in Sources */,
 				8027938F21725EE8002D0632 /* EndPoints.swift in Sources */,
 				8027938921725EDF002D0632 /* ReachabilityManager.swift in Sources */,

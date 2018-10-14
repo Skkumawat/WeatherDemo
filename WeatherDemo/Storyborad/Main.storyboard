@@ -26,10 +26,43 @@
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOg-Cf-J3O">
                                 <rect key="frame" x="0.0" y="64" width="768" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="WQw-li-2Nx"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="agp-vC-9zc">
                                 <rect key="frame" x="0.0" y="120" width="768" height="904"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LocationTableCell" id="Pl3-75-Bcs" customClass="LocationTableCell" customModule="WeatherDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pl3-75-Bcs" id="gMK-lg-ekF">
+                                            <rect key="frame" x="0.0" y="0.0" width="735" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btf-8v-Yhk">
+                                                    <rect key="frame" x="10" y="5" width="725" height="33.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="5yd-VO-l1j"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="btf-8v-Yhk" secondAttribute="bottom" constant="5" id="43d-oK-bwB"/>
+                                                <constraint firstItem="btf-8v-Yhk" firstAttribute="top" secondItem="gMK-lg-ekF" secondAttribute="top" constant="5" id="MsA-au-gpP"/>
+                                                <constraint firstItem="btf-8v-Yhk" firstAttribute="leading" secondItem="gMK-lg-ekF" secondAttribute="leading" constant="10" id="RL6-qK-HC0"/>
+                                                <constraint firstAttribute="trailing" secondItem="btf-8v-Yhk" secondAttribute="trailing" id="liD-mS-X54"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblAddress" destination="btf-8v-Yhk" id="l6I-7T-OQn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="VkE-zU-P6X"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="0Gs-h8-dK8"/>
@@ -49,6 +82,7 @@
                         <viewLayoutGuide key="safeArea" id="AF1-zv-pkz"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="ZOg-Cf-J3O" id="hBA-QO-Ace"/>
                         <outlet property="tblCities" destination="agp-vC-9zc" id="xxa-nh-sex"/>
                     </connections>
                 </viewController>
@@ -112,6 +146,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rqu-gc-ywK">
                                         <rect key="frame" x="84.5" y="51" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchControlChanged:" destination="WM7-Ka-2UL" eventType="valueChanged" id="tlk-BF-9hA"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit system :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teZ-HV-BqE">
                                         <rect key="frame" x="50.5" y="102" width="117" height="28"/>
@@ -129,6 +166,9 @@
                                             <segment title="Metric"/>
                                             <segment title="Imperial"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="segmentedControlChanged:" destination="WM7-Ka-2UL" eventType="valueChanged" id="z93-Bj-spf"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
@@ -140,6 +180,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZNA-zh-QAd"/>
                     </view>
+                    <connections>
+                        <outlet property="switchForReset" destination="rqu-gc-ywK" id="IkJ-5n-FIB"/>
+                        <outlet property="unitTypeSeg" destination="IMk-Hh-Vlk" id="IQv-Wz-SAs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unQ-BQ-nno" sceneMemberID="firstResponder"/>
             </objects>

@@ -31,7 +31,16 @@ class SettingsVC: UIViewController {
     @IBAction func switchControlChanged(_ sender: UISwitch) {
         if sender.isOn == true {
             //Delete all bookmarked cites
-            CoreDataManager.deleteAllCitiesData(entityName: "Address")
+            CoreDataManager.deleteAllCitiesData(entityName: "Address", completionHandler: { success in
+                if success {
+                    self.switchForReset.isOn = false
+                    Utility.showAlert(strMessage: "All bookmark cities deleted successfully", Onview: self)
+                    self.tabBarController?.selectedIndex = 0
+                }
+                else{
+                    Utility.showAlert(strMessage: "All bookmark cities are not deleted, Please try again!", Onview: self)
+                }
+            })
         }
     }
     

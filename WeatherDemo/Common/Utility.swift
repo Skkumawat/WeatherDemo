@@ -32,4 +32,18 @@ class Utility: NSObject {
             
         }
     }
+    
+    class func showAlert( strMessage : String , Onview : UIViewController)
+    {
+
+        DispatchQueue.main.async {
+                
+                let alertController = UIAlertController(title: "Weather Demo", message: strMessage, preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+                
+                Onview.present(alertController, animated: true, completion: nil)
+            }
+        
+    }
 }

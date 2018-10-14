@@ -15,16 +15,16 @@ class CoreDataManager: NSObject {
     static let appdelgate = (UIApplication.shared.delegate as! AppDelegate)
     static let context = appdelgate.persistentContainer.viewContext
     
-    class func saveAddressData(cityData: CitiyModel) {
-        let city = Address(context: context)
+    class func saveAddressData(locationData: LocationModel) {
+        let location = Address(context: context)
         
-        city.address = cityData.address
-        city.latitude = cityData.latitude
-        city.longitude = cityData.longitude
+        location.address = locationData.address
+        location.latitude = locationData.latitude
+        location.longitude = locationData.longitude
         appdelgate.saveContext()
     }
     
-    class func deleteAllCitiesData(entityName: String) {
+    class func deleteAllCitiesData(entityName: String, completionHandler: @escaping (_ success: Bool) -> ()) {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         
@@ -35,27 +35,52 @@ class CoreDataManager: NSObject {
         for object in result! {
             context.delete(object as! NSManagedObject)
         }
+        completionHandler(true)
+        appdelgate.saveContext()
     }
     
-    class func getAllCities()-> [CitiyModel]{
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+    class func getAllCities(completionHandler: @escaping ([LocationModel]) -> ()){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Address")
         request.returnsObjectsAsFaults = false
-        var citiesData = [CitiyModel]()
+        var LocationsData = [LocationModel]()
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-                let cityData = CitiyModel()
-                cityData.address =   data.value(forKey: "address") as! String
-                cityData.longitude =   data.value(forKey: "longitude") as! Double
-                cityData.latitude =   data.value(forKey: "latitude") as! Double
-                citiesData.append(cityData)
+                let locationData = LocationModel()
+                locationData.address =   data.value(forKey: "address") as! String
+                locationData.longitude =   data.value(forKey: "longitude") as! Double
+                locationData.latitude =   data.value(forKey: "latitude") as! Double
+                LocationsData.append(locationData)
             }
+            completionHandler(LocationsData)
             
         } catch {
             
             print("Failed")
         }
-        return citiesData
+    }
+    
+    class func deleteLocation(location: LocationModel) {
+        if let locationData = getUsersByAddress(address: location.address) {
+            context.delete(locationData)
+        }
+         appdelgate.saveContext()
+    }
+    
+    class func getUsersByAddress(address: String)-> NSManagedObject?{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Address")
+        request.predicate = NSPredicate(format: "address == %@", address)
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                return data
+            }
+        } catch {
+            
+            print("Failed")
+        }
+        return nil
     }
     
 }
