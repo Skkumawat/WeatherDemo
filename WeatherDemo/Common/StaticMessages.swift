@@ -8,5 +8,6 @@
 
 import Foundation
 
-let network_error              = "Are you sure you want to Logout?"
-
+let server_error              = "Something wrong on the server side, Please try again."
+let internet_error = "Internet is not connected, Please check your internet connection and try again"
+let locationNotFound = "No Bookmark Location Found."

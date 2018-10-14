@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6FD034E7E7CFE689C50FD5AD /* Pods_WeatherDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2B2970B6A598313F712002 /* Pods_WeatherDemoTests.framework */; };
+		8021997D21739D5300A9DE75 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021997C21739D5300A9DE75 /* UITableView.swift */; };
+		8021997F2173A7B400A9DE75 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021997E2173A7B400A9DE75 /* WeatherDataModel.swift */; };
+		802199812173A9FA00A9DE75 /* WeatherDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802199802173A9FA00A9DE75 /* WeatherDetailsVC.swift */; };
+		802199832173B4D100A9DE75 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802199822173B4D100A9DE75 /* Utilities.swift */; };
 		8022A3F021734C3300E1CB46 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3EF21734C3300E1CB46 /* Utility.swift */; };
 		8022A3F3217360B800E1CB46 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3F2217360B800E1CB46 /* CoreDataManager.swift */; };
 		8022A3F52173610500E1CB46 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3F42173610500E1CB46 /* LocationModel.swift */; };
@@ -62,6 +66,10 @@
 		5EDDADB83F5B3ED40C93A6D4 /* Pods-WeatherDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemoUITests/Pods-WeatherDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		75149E88A5CD5812E2C1ABD8 /* Pods-WeatherDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemoTests/Pods-WeatherDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B74FB349B6820F9FFA55243 /* Pods-WeatherDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemo/Pods-WeatherDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		8021997C21739D5300A9DE75 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		8021997E2173A7B400A9DE75 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
+		802199802173A9FA00A9DE75 /* WeatherDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsVC.swift; sourceTree = "<group>"; };
+		802199822173B4D100A9DE75 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		8022A3EF21734C3300E1CB46 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8022A3F2217360B800E1CB46 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8022A3F42173610500E1CB46 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -148,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8022A3F92173702E00E1CB46 /* String.swift */,
+				8021997C21739D5300A9DE75 /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,6 +232,7 @@
 		8027938121725EDF002D0632 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				802199822173B4D100A9DE75 /* Utilities.swift */,
 				8027938221725EDF002D0632 /* StaticMessages.swift */,
 				8027938321725EDF002D0632 /* NSObjectExtension.swift */,
 				8027938421725EDF002D0632 /* ReachabilityManager.swift */,
@@ -246,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				8027939721725EFF002D0632 /* HomeVC.swift */,
+				802199802173A9FA00A9DE75 /* WeatherDetailsVC.swift */,
 				8027939521725EFF002D0632 /* HelpVC.swift */,
 				8027939621725EFF002D0632 /* SettingsVC.swift */,
 				8027939421725EFF002D0632 /* LocationVC.swift */,
@@ -266,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				8022A3F42173610500E1CB46 /* LocationModel.swift */,
+				8021997E2173A7B400A9DE75 /* WeatherDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -493,12 +505,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -580,6 +594,7 @@
 			files = (
 				8022A3F021734C3300E1CB46 /* Utility.swift in Sources */,
 				8027935821725D4D002D0632 /* WeatherDemo.xcdatamodeld in Sources */,
+				802199832173B4D100A9DE75 /* Utilities.swift in Sources */,
 				8027938A21725EDF002D0632 /* AppConstants.swift in Sources */,
 				8022A3F3217360B800E1CB46 /* CoreDataManager.swift in Sources */,
 				8027935021725D4D002D0632 /* AppDelegate.swift in Sources */,
@@ -588,13 +603,16 @@
 				8027938721725EDF002D0632 /* StaticMessages.swift in Sources */,
 				8027939B21725EFF002D0632 /* SettingsVC.swift in Sources */,
 				8022A3F721736AD700E1CB46 /* LocationTableCell.swift in Sources */,
+				8021997F2173A7B400A9DE75 /* WeatherDataModel.swift in Sources */,
 				8027939921725EFF002D0632 /* LocationVC.swift in Sources */,
 				8022A3F52173610500E1CB46 /* LocationModel.swift in Sources */,
 				8022A3FA2173702E00E1CB46 /* String.swift in Sources */,
 				8027938821725EDF002D0632 /* NSObjectExtension.swift in Sources */,
 				8027938F21725EE8002D0632 /* EndPoints.swift in Sources */,
+				802199812173A9FA00A9DE75 /* WeatherDetailsVC.swift in Sources */,
 				8027938921725EDF002D0632 /* ReachabilityManager.swift in Sources */,
 				8027939021725EE8002D0632 /* BaseService.swift in Sources */,
+				8021997D21739D5300A9DE75 /* UITableView.swift in Sources */,
 				8027939A21725EFF002D0632 /* HelpVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

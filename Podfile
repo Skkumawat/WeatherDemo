@@ -10,6 +10,7 @@ target 'WeatherDemo' do
 	pod 'Alamofire', '~> 4.7'
   	pod 'MBProgressHUD', '~> 1.1.0'
 	pod 'ReachabilitySwift'
+	pod 'SwiftyJSON'
 
   target 'WeatherDemoTests' do
     inherit! :search_paths

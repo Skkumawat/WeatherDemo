@@ -118,8 +118,16 @@ extension HomeVC : UISearchBarDelegate {
     }
 }
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearch ? searchLocations.count : locations.count
+        let count = isSearch ? searchLocations.count : locations.count
+        if count == 0 {
+            self.tblCities.setBackgroundMessage(locationNotFound)
+        }
+        else{
+            self.tblCities.backgroundView = nil
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,8 +161,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // let vc = UserDetails.storyboardInstance()
-       // vc.user = self.users[indexPath.row]
-      //  self.navigationController?.pushViewController(vc, animated: true)
+        let vc = WeatherDetailsVC.storyboardInstance()
+        vc.locationData = isSearch ? self.searchLocations[indexPath.row] : self.locations[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

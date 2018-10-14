@@ -15,6 +15,7 @@ var helpURL: String {
 }
 enum ScreenTitle: String {
     case home = "Home"
+    case weatherdetails = "Weather Details"
     case help = "Help"
     case settings = "Settings"
     case location = "Add Location"
@@ -22,7 +23,7 @@ enum ScreenTitle: String {
 
 
 enum APIType: String {
-    case Metric = "metric"
+    case Weather = "weather"
     case Forecast = "forecast"
 }
 

@@ -26,9 +26,9 @@ class BaseService {
     var dataRequestArray: [DataRequest] = []
     var sessionManager: [String : Alamofire.SessionManager] = [:]
     
-    func callEndPoint(lat: String, long: String, method: Alamofire.HTTPMethod = .get, headers: [String:String]? = [:], params: JsonDictionay? = [:], completion: @escaping (ServiceResponse) -> Void){
+    func callEndPointForToday(_ forToday: Bool, lat: String, long: String, method: Alamofire.HTTPMethod = .get, headers: [String:String]? = [:], params: JsonDictionay? = [:], completion: @escaping (ServiceResponse) -> Void){
         
-        let url = ForecastEndPoint.baseUrlForWeather + "&lat=\(lat)&long=\(long)"
+        let url = forToday ? ForecastEndPoint.baseUrlForWeather + "&lat=\(lat)&lon=\(long)" : ForecastEndPoint.baseUrlForForecast + "&lat=\(lat)&lon=\(long)"
         
         switch method {
         case .post:

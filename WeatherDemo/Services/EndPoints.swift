@@ -10,10 +10,10 @@ import Foundation
 
 struct ForecastEndPoint {
     //Today’s forecast:
-    static let baseUrlForWeather      : String = AppConstants.protocolo + AppConstants.domain + "/data/" + AppConstants.apiVersion + "/(\(APIType.Metric)?" + "appid=\(AppConstants.apiKey)" + "&units=\(AppConstants.unitsType)"
+    static let baseUrlForWeather      : String = AppConstants.protocolo + AppConstants.domain + "/data/" + AppConstants.apiVersion + "/\(APIType.Weather.rawValue)?" + "appid=\(AppConstants.apiKey)" + "&units=\(AppConstants.unitsType)"
     
     //5-days forecast:
-    static let baseUrlForForecast      : String = AppConstants.protocolo + AppConstants.domain + "/data/" + AppConstants.apiVersion + "/(\(APIType.Forecast)?" + "appid=\(AppConstants.apiKey)" + "&units=\(AppConstants.unitsType)"
+    static let baseUrlForForecast      : String = AppConstants.protocolo + AppConstants.domain + "/data/" + AppConstants.apiVersion + "/\(APIType.Forecast.rawValue)?" + "appid=\(AppConstants.apiKey)" + "&units=\(AppConstants.unitsType)"
     
 }
 
