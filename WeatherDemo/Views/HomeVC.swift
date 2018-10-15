@@ -23,7 +23,7 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = ScreenTitle.home.rawValue
+        self.navigationItem.title = ScreenTitle.home.rawValue
         
         setUpTableUI()
         

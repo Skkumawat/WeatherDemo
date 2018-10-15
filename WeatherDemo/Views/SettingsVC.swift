@@ -20,7 +20,7 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         switchForReset.isOn = false
-        self.title = ScreenTitle.settings.rawValue
+        self.navigationItem.title = ScreenTitle.settings.rawValue
 
         // Do any additional setup after loading the view.
     }

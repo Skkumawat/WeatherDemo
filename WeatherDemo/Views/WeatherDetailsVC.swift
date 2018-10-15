@@ -24,7 +24,7 @@ class WeatherDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = ScreenTitle.weatherdetails.rawValue
+        self.navigationItem.title = ScreenTitle.weatherdetails.rawValue
         
         setUpTableUI()
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +13,7 @@
         <scene sceneID="wxE-FV-R7x">
             <objects>
                 <navigationController id="ocX-HP-znE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="HOME" id="KvP-RJ-fhr">
+                    <tabBarItem key="tabBarItem" title="HOME" image="home" selectedImage="home" id="KvP-RJ-fhr">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,6 +46,11 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.094683997330000005" green="0.50873434539999995" blue="0.99784559009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="ocX-HP-znE" kind="relationship" relationship="viewControllers" id="vX4-9b-xJm"/>
@@ -61,7 +66,7 @@
         <scene sceneID="3QW-CZ-hvG">
             <objects>
                 <navigationController id="j4f-Ve-OUh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="HELP" id="kip-DC-Qkb">
+                    <tabBarItem key="tabBarItem" title="HELP" image="help" selectedImage="help" id="kip-DC-Qkb">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -87,7 +92,7 @@
         <scene sceneID="O3F-RI-nrx">
             <objects>
                 <navigationController id="OW4-yG-N4S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="SETTINGS" id="3aL-fZ-wXf">
+                    <tabBarItem key="tabBarItem" title="SETTINGS" image="settings" selectedImage="settings" id="3aL-fZ-wXf">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,4 +115,9 @@
             <point key="canvasLocation" x="-535" y="-806"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="help" width="26" height="26"/>
+        <image name="home" width="26" height="26"/>
+        <image name="settings" width="26" height="26"/>
+    </resources>
 </document>

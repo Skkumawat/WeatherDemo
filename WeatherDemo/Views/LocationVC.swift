@@ -25,7 +25,7 @@ class LocationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = ScreenTitle.location.rawValue
+        self.navigationItem.title = ScreenTitle.location.rawValue
         
         setCurrentLocation()
         

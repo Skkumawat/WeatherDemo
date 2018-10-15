@@ -18,7 +18,7 @@ class HelpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = ScreenTitle.help.rawValue
+       self.navigationItem.title = ScreenTitle.help.rawValue
         
         loadRequest()
         // Do any additional setup after loading the view.
