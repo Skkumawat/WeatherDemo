@@ -70,9 +70,10 @@ class HomeVC: UIViewController {
         locations.removeAll()
         CoreDataManager.getAllCities { locations in
             self.locations = locations
-            self.tblCities.reloadData()
+            DispatchQueue.main.async {
+                self.tblCities.reloadData()
+            }
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +81,6 @@ class HomeVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -132,7 +132,9 @@ extension HomeVC : UISearchBarDelegate {
                 }
             }
         }
-        tblCities.reloadData()
+        DispatchQueue.main.async {
+            self.tblCities.reloadData()
+        }
     }
 }
 // Mark UITableView delegate and datasource methods

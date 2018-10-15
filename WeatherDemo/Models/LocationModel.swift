@@ -1,5 +1,5 @@
 //
-//  CitiyModel.swift
+//  LocationModel.swift
 //  WeatherDemo
 //
 //  Created by Sharvan  Kumawat on 10/14/18.

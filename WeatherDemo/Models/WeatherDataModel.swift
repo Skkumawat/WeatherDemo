@@ -1,5 +1,5 @@
 //
-//  CityDetailModel.swift
+//  WeatherDataModel.swift
 //  WeatherDemo
 //
 //  Created by Sharvan  Kumawat on 10/14/18.
@@ -32,8 +32,6 @@ class WeatherDataModel: NSObject {
         currentTemp              = main["temp"] as? Double ?? 0.0
         humidity                 = main["humidity"] as? Int ?? 0
        
-        
-        
         let wind: [String: Any] = (attributes["wind"] as? [String: Any])!
         windSpeed                 = wind["speed"] as? Double ?? 0.0
         

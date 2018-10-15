@@ -13,6 +13,8 @@ import UIKit
 var helpURL: String {
     return "https://www.mobiquityinc.com/about-us"
 }
+
+
 enum ScreenTitle: String {
     case home = "Home"
     case weatherdetails = "Weather Details"

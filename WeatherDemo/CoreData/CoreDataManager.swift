@@ -14,6 +14,7 @@ class CoreDataManager: NSObject {
     
     static let appdelgate = (UIApplication.shared.delegate as! AppDelegate)
     static let context = appdelgate.persistentContainer.viewContext
+    
     /**
      Creates a method for save location in core data.
      
