@@ -42,7 +42,7 @@ class WeatherDetailsVC: UIViewController {
     func loadDatafromWeatherAPI() {
         Utility.ShowProgressHud(Onview: self.view)
         
-        serviceManager.callEndPointForToday(true, lat: "\(locationData.latitude)", long: "\(locationData.longitude)") { [weak self] (response) in
+        serviceManager.callEndPointForToday(false, lat: "\(locationData.latitude)", long: "\(locationData.longitude)") { [weak self] (response) in
             
             guard let strongSelf = self else { return }
             
@@ -50,9 +50,20 @@ class WeatherDetailsVC: UIViewController {
             
             switch response {
             case .success(let result):
-                print(result)
-                let weatherObj = WeatherDataModel(result)
-                strongSelf.weatherDataArray.append(weatherObj)
+                
+                let list = result["list"] as? [[String: Any]]
+                if let listData = list {
+                    for data in listData {
+                        print(data)
+                        let weatherObj = WeatherDataModel(data)
+                        strongSelf.weatherDataArray.append(weatherObj)
+                    }
+                }
+                else{
+                    let weatherObj = WeatherDataModel(result)
+                    strongSelf.weatherDataArray.append(weatherObj)
+                }
+                
                 DispatchQueue.main.async {
                     strongSelf.tblCityDetail.reloadData()
                 }

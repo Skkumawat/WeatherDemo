@@ -17,6 +17,7 @@ class WeatherViewModel {
     var currentTemp: Double?
     var humidity: Int?
     var windSpeed: Double?
+    var date: String?
     
     
     init(_ weatherData: WeatherDataModel) {
@@ -27,6 +28,7 @@ class WeatherViewModel {
         currentTemp = weatherData.currentTemp
         humidity = weatherData.humidity
         windSpeed = weatherData.windSpeed
+        date = weatherData.date
     }
     
     func cellInstance(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
