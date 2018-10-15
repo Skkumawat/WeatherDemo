@@ -15,6 +15,8 @@ class WeatherDetailsVC: UIViewController {
     }
     
     @IBOutlet weak var tblCityDetail: UITableView!
+    @IBOutlet weak var daysSeg: UISegmentedControl!
+    
     var locationData = LocationModel()
     let serviceManager = BaseService()
     
@@ -39,10 +41,14 @@ class WeatherDetailsVC: UIViewController {
         tblCityDetail.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tblCityDetail.frame.size.width, height: 0))
     }
     
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+        loadDatafromWeatherAPI()
+    }
+    
     func loadDatafromWeatherAPI() {
         Utility.ShowProgressHud(Onview: self.view)
         
-        serviceManager.callEndPointForToday(false, lat: "\(locationData.latitude)", long: "\(locationData.longitude)") { [weak self] (response) in
+        serviceManager.callEndPointForToday(daysSeg.selectedSegmentIndex == 0 ? true : false, lat: "\(locationData.latitude)", long: "\(locationData.longitude)") { [weak self] (response) in
             
             guard let strongSelf = self else { return }
             
@@ -50,7 +56,7 @@ class WeatherDetailsVC: UIViewController {
             
             switch response {
             case .success(let result):
-                
+                strongSelf.weatherDataArray.removeAll()
                 let list = result["list"] as? [[String: Any]]
                 if let listData = list {
                     for data in listData {

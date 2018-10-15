@@ -255,8 +255,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M5E-Zg-OZy">
+                                <rect key="frame" x="0.0" y="20" width="414" height="29"/>
+                                <segments>
+                                    <segment title="Today"/>
+                                    <segment title="Five Days"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="uUL-m7-5tb" eventType="valueChanged" id="tRh-8p-SOA"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UOH-Oz-snQ">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="53" width="414" height="683"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherTableViewCell" rowHeight="128" id="5ES-a2-OxM" customClass="WeatherTableViewCell" customModule="WeatherDemo" customModuleProvider="target">
@@ -293,14 +303,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="top" secondItem="Hmj-Y2-Ia8" secondAttribute="top" id="8eR-qB-DKf"/>
-                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="trailing" secondItem="Hmj-Y2-Ia8" secondAttribute="trailing" id="9UB-vR-K8I"/>
-                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="bottom" secondItem="Hmj-Y2-Ia8" secondAttribute="bottom" id="MGJ-bg-vfZ"/>
-                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="leading" secondItem="Hmj-Y2-Ia8" secondAttribute="leading" id="pDl-2q-zCk"/>
+                            <constraint firstItem="M5E-Zg-OZy" firstAttribute="top" secondItem="Hmj-Y2-Ia8" secondAttribute="top" id="8CG-nH-vG0"/>
+                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="trailing" secondItem="Hmj-Y2-Ia8" secondAttribute="trailing" id="8bX-Jx-Cy5"/>
+                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="bottom" secondItem="Hmj-Y2-Ia8" secondAttribute="bottom" id="Erh-WA-oQt"/>
+                            <constraint firstItem="M5E-Zg-OZy" firstAttribute="leading" secondItem="Hmj-Y2-Ia8" secondAttribute="leading" id="IJE-A6-0NH"/>
+                            <constraint firstItem="M5E-Zg-OZy" firstAttribute="trailing" secondItem="Hmj-Y2-Ia8" secondAttribute="trailing" id="IyZ-o7-a6K"/>
+                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="leading" secondItem="Hmj-Y2-Ia8" secondAttribute="leading" id="JEn-GX-rQd"/>
+                            <constraint firstItem="M5E-Zg-OZy" firstAttribute="leading" secondItem="Hmj-Y2-Ia8" secondAttribute="leading" id="gte-Se-2Cl"/>
+                            <constraint firstItem="UOH-Oz-snQ" firstAttribute="top" secondItem="M5E-Zg-OZy" secondAttribute="bottom" constant="5" id="nPL-P8-26v"/>
+                            <constraint firstItem="M5E-Zg-OZy" firstAttribute="trailing" secondItem="Hmj-Y2-Ia8" secondAttribute="trailing" id="ulq-HK-v1C"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hmj-Y2-Ia8"/>
                     </view>
                     <connections>
+                        <outlet property="daysSeg" destination="M5E-Zg-OZy" id="Mn2-df-lSv"/>
                         <outlet property="tblCityDetail" destination="UOH-Oz-snQ" id="PVv-em-I79"/>
                     </connections>
                 </viewController>
