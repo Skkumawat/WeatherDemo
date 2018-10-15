@@ -18,11 +18,11 @@ class WeatherTableViewCell: UITableViewCell {
     func setup(_ viewModel: WeatherViewModel) {
         self.selectionStyle = .none
         
-        guard let minTemp = viewModel.minTemp, let maxTemp = viewModel.maxTemp
+        guard let minTemp = viewModel.minTemp, let maxTemp = viewModel.maxTemp, let currentTemp = viewModel.currentTemp,let humidity = viewModel.humidity, let windSpeed = viewModel.windSpeed
              else {
                 print("ViewModel is invalid")
                 return
         }
-        weatherMainLabel.text = String(maxTemp)
+        weatherMainLabel.text = "Temperature: \(currentTemp)\nMin Temperature: \(minTemp)\nMax Temperature: \(maxTemp)\nHumidity: \(humidity)\nWind Speed: \(windSpeed)"
     }
 }

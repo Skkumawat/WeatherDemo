@@ -53,7 +53,10 @@ class WeatherDetailsVC: UIViewController {
                 print(result)
                 let weatherObj = WeatherDataModel(result)
                 strongSelf.weatherDataArray.append(weatherObj)
-                strongSelf.tblCityDetail.reloadData()
+                DispatchQueue.main.async {
+                    strongSelf.tblCityDetail.reloadData()
+                }
+                
                 break
             case .failure:
                 Utility.showAlert(strMessage: server_error, Onview: strongSelf)

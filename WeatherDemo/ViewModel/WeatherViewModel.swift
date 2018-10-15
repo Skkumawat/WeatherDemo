@@ -12,12 +12,11 @@ import SwiftyJSON
 class WeatherViewModel {
     var weatherData: WeatherDataModel
     
-    var minTemp: Int?
-    var maxTemp: Int?
-    var currentTemp: Int?
+    var minTemp: Double?
+    var maxTemp: Double?
+    var currentTemp: Double?
     var humidity: Int?
     var windSpeed: Double?
-    var windDeg: Int?
     
     
     init(_ weatherData: WeatherDataModel) {
@@ -27,8 +26,7 @@ class WeatherViewModel {
         maxTemp = weatherData.maxTemp
         currentTemp = weatherData.currentTemp
         humidity = weatherData.humidity
-        windDeg = weatherData.windDeg
-        windSpeed = Double(weatherData.windSpeed)
+        windSpeed = weatherData.windSpeed
     }
     
     func cellInstance(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
