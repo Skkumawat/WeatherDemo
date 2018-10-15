@@ -1,9 +1,9 @@
 //
 //  WeatherTableViewCell.swift
-//  swift-mvvm
+//  WeatherDemo
 //
-//  Created by Taylor Guidon on 11/30/16.
-//  Copyright © 2016 ISL. All rights reserved.
+//  Created by Sharvan Kumawat on 10/11/18.
+//  Copyright © 2018 Sharvan. All rights reserved.
 //
 
 import UIKit

@@ -60,7 +60,6 @@ class WeatherDetailsVC: UIViewController {
                 let list = result["list"] as? [[String: Any]]
                 if let listData = list {
                     for data in listData {
-                        print(data)
                         let weatherObj = WeatherDataModel(data)
                         strongSelf.weatherDataArray.append(weatherObj)
                     }
