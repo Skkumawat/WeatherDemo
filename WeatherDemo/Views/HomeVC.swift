@@ -40,7 +40,15 @@ class HomeVC: UIViewController {
         let locationVC = LocationVC.storyboardInstance()
         self.navigationController?.pushViewController(locationVC, animated: true)
     }
-    
+    /**
+     Creates a method for setup UI of TableView.
+     
+     - Parameter recipient:
+     
+     - Throws:
+     
+     - Returns:
+     */
     func setUpTableUI()  {
         tblCities.estimatedRowHeight = 44
         tblCities.separatorStyle = .singleLine
@@ -49,6 +57,15 @@ class HomeVC: UIViewController {
         
         tblCities.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tblCities.frame.size.width, height: 0))
     }
+    /**
+     Creates a method for fetch all bookmarked cities.
+     
+     - Parameter recipient:
+     
+     - Throws: Getting error when core data file not exist or rename the entity and its attributs
+     
+     - Returns: Array of all bookmarked cities
+     */
     func getAllCities(){
         locations.removeAll()
         CoreDataManager.getAllCities { locations in
@@ -75,6 +92,7 @@ class HomeVC: UIViewController {
     */
 
 }
+// Mark Search bar delegate methods
 extension HomeVC : UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool{
         searchBar.showsCancelButton = true
@@ -117,6 +135,7 @@ extension HomeVC : UISearchBarDelegate {
         tblCities.reloadData()
     }
 }
+// Mark UITableView delegate and datasource methods
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

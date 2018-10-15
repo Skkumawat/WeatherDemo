@@ -11,7 +11,6 @@
 		8021997D21739D5300A9DE75 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021997C21739D5300A9DE75 /* UITableView.swift */; };
 		8021997F2173A7B400A9DE75 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021997E2173A7B400A9DE75 /* WeatherDataModel.swift */; };
 		802199812173A9FA00A9DE75 /* WeatherDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802199802173A9FA00A9DE75 /* WeatherDetailsVC.swift */; };
-		802199832173B4D100A9DE75 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802199822173B4D100A9DE75 /* Utilities.swift */; };
 		802199862173BAB300A9DE75 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802199852173BAB300A9DE75 /* WeatherViewModel.swift */; };
 		802199882173BC3300A9DE75 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802199872173BC3200A9DE75 /* WeatherTableViewCell.swift */; };
 		8022A3F021734C3300E1CB46 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8022A3EF21734C3300E1CB46 /* Utility.swift */; };
@@ -71,7 +70,6 @@
 		8021997C21739D5300A9DE75 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8021997E2173A7B400A9DE75 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		802199802173A9FA00A9DE75 /* WeatherDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsVC.swift; sourceTree = "<group>"; };
-		802199822173B4D100A9DE75 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		802199852173BAB300A9DE75 /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		802199872173BC3200A9DE75 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		8022A3EF21734C3300E1CB46 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 		8027938121725EDF002D0632 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				802199822173B4D100A9DE75 /* Utilities.swift */,
 				8027938221725EDF002D0632 /* StaticMessages.swift */,
 				8027938321725EDF002D0632 /* NSObjectExtension.swift */,
 				8027938421725EDF002D0632 /* ReachabilityManager.swift */,
@@ -609,7 +606,6 @@
 				802199882173BC3300A9DE75 /* WeatherTableViewCell.swift in Sources */,
 				8022A3F021734C3300E1CB46 /* Utility.swift in Sources */,
 				8027935821725D4D002D0632 /* WeatherDemo.xcdatamodeld in Sources */,
-				802199832173B4D100A9DE75 /* Utilities.swift in Sources */,
 				8027938A21725EDF002D0632 /* AppConstants.swift in Sources */,
 				8022A3F3217360B800E1CB46 /* CoreDataManager.swift in Sources */,
 				8027935021725D4D002D0632 /* AppDelegate.swift in Sources */,

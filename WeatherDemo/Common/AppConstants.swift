@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-
+// Set url of help web page
 var helpURL: String {
     return "https://www.mobiquityinc.com/about-us"
 }

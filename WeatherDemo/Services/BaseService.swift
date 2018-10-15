@@ -26,6 +26,16 @@ class BaseService {
     var dataRequestArray: [DataRequest] = []
     var sessionManager: [String : Alamofire.SessionManager] = [:]
     
+    /**
+     Creates a method for fetching weather data from the server in JSON format.
+     
+     - Parameter recipient: forToday or five days, lat, long
+     
+     - Throws: Getting error when user don't allow to add ATS in info.plist or some server error
+     
+     - Returns: JSON Object with key value pair
+     */
+    
     func callEndPointForToday(_ forToday: Bool, lat: String, long: String, method: Alamofire.HTTPMethod = .get, headers: [String:String]? = [:], params: JsonDictionay? = [:], completion: @escaping (ServiceResponse) -> Void){
         
         let url = forToday ? ForecastEndPoint.baseUrlForWeather + "&lat=\(lat)&lon=\(long)" : ForecastEndPoint.baseUrlForForecast + "&lat=\(lat)&lon=\(long)"
@@ -82,7 +92,15 @@ class BaseService {
             strongSelf.success(result:jsonResponse , headers: urlResponse.allHeaderFields, completion: completion)
         }
     }
-    
+    /**
+     Creates a method for calcel the running process and remove all saved data in the  array.
+     
+     - Parameter recipient:
+     
+     - Throws:
+     
+     - Returns:
+     */
     func cancelAllRequests () {
         for dataRequest in self.dataRequestArray {
             dataRequest.cancel()

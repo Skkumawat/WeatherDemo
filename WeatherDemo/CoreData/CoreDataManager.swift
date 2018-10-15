@@ -14,7 +14,15 @@ class CoreDataManager: NSObject {
     
     static let appdelgate = (UIApplication.shared.delegate as! AppDelegate)
     static let context = appdelgate.persistentContainer.viewContext
-    
+    /**
+     Creates a method for save location in core data.
+     
+     - Parameter recipient: locationData
+     
+     - Throws: If core data persistence is not available then app will get expection
+     
+     - Returns:
+     */
     class func saveAddressData(locationData: LocationModel) {
         let location = Address(context: context)
         
@@ -23,7 +31,15 @@ class CoreDataManager: NSObject {
         location.longitude = locationData.longitude
         appdelgate.saveContext()
     }
-    
+    /**
+     Creates a method for all saved location from the core data.
+     
+     - Parameter recipient: locationData
+     
+     - Throws: If core data persistence is not available then app will get expection
+     
+     - Returns: completionHandler of success
+     */
     class func deleteAllCitiesData(entityName: String, completionHandler: @escaping (_ success: Bool) -> ()) {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -38,7 +54,15 @@ class CoreDataManager: NSObject {
         completionHandler(true)
         appdelgate.saveContext()
     }
-    
+    /**
+     Creates a method for get all saved location.
+     
+     - Parameter recipient: locationData
+     
+     - Throws: If core data persistence is not available then app will get expection
+     
+     - Returns: Array of LocationModel
+     */
     class func getAllCities(completionHandler: @escaping ([LocationModel]) -> ()){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Address")
         request.returnsObjectsAsFaults = false
@@ -59,15 +83,31 @@ class CoreDataManager: NSObject {
             print("Failed")
         }
     }
-    
+    /**
+     Creates a method for to delete single object.
+     
+     - Parameter recipient: location
+     
+     - Throws: If core data persistence is not available then app will get expection
+     
+     - Returns:
+     */
     class func deleteLocation(location: LocationModel) {
-        if let locationData = getUsersByAddress(address: location.address) {
+        if let locationData = getLocationByAddress(address: location.address) {
             context.delete(locationData)
         }
          appdelgate.saveContext()
     }
-    
-    class func getUsersByAddress(address: String)-> NSManagedObject?{
+    /**
+     Creates a method for get location according to address.
+     
+     - Parameter recipient: address
+     
+     - Throws: If core data persistence is not available then app will get expection
+     
+     - Returns: Object of NSManagedObject
+     */
+    class func getLocationByAddress(address: String)-> NSManagedObject?{
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Address")
         request.predicate = NSPredicate(format: "address == %@", address)
         request.returnsObjectsAsFaults = false

@@ -18,11 +18,21 @@ class HelpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.navigationItem.title = ScreenTitle.help.rawValue
+        
+        self.navigationItem.title = ScreenTitle.help.rawValue
         
         loadRequest()
         // Do any additional setup after loading the view.
     }
+    /**
+     Creates a method for load url in the webview.
+     
+     - Parameter recipient: URL
+     
+     - Throws: If internet not working then getting error of network connectivity
+     
+     - Returns:
+     */
     func loadRequest()  {
         
         let url = NSURL (string: helpURL)
@@ -48,17 +58,22 @@ class HelpVC: UIViewController {
     */
 
 }
+
 extension HelpVC: UIWebViewDelegate {
+     // MARK: - UIWebiew delegate method
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         return true
     }
+    
     func webViewDidStartLoad(_ webView: UIWebView) {
-        Utility.ShowProgressHud(Onview: self.view)
+        Utility.ShowProgressHud(onView: self.view)
     }
+    
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        Utility.HideProgressHud(Onview: self.view)
+        Utility.HideProgressHud(onView: self.view)
     }
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        Utility.HideProgressHud(Onview: self.view)
+        Utility.HideProgressHud(onView: self.view)
     }
 }

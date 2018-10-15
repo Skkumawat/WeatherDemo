@@ -11,8 +11,16 @@ import UIKit
 import CoreLocation
 class LocationManager {
     
-    //MARK:- GET LOCATION
-    
+    //MARK:- Get location using reverseGeocodeLocation
+    /**
+     Creates a method for get pin map location on map using the predefine method of reverseGeocodeLocation.
+     
+     - Parameter recipient: location
+     
+     - Throws: Getting error when user don't allow to access location
+     
+     - Returns: Address
+     */
     class func getAddressFromLatitudeLongitude(location: CLLocation, completionHandler: @escaping (String?) -> ()) {
         
         var adressString = ""
@@ -45,7 +53,6 @@ class LocationManager {
                     adressString = adressString + placeMark.country!
                 }
                 completionHandler(adressString)
-                //self.txtStart.text = "\(adressString)"
             }
             else{
                 print("Getting error when fetch address")

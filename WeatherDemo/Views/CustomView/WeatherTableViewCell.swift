@@ -14,7 +14,16 @@ class WeatherTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    /**
+     Creates a method for display weather data on UI .
+     
+     - Parameter recipient: viewModel
+     
+     - Throws: If Weather value is not exist then we geeting invalid ViewModel
+     
+     - Returns: Set value of weahter in the lable
+     */
     func setup(_ viewModel: WeatherViewModel) {
         self.selectionStyle = .none
         

@@ -35,7 +35,15 @@ class LocationVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    /**
+     Creates a method for set current location of user.
+     
+     - Parameter recipient:
+     
+     - Throws: If location service doesn't enable or user don't allow to access then we get error and can't set the current location on the map
+     
+     - Returns: Set current location on the aaple map
+     */
     func setCurrentLocation(){
         if (CLLocationManager.locationServicesEnabled()) {
             if locationManager == nil {
@@ -48,7 +56,15 @@ class LocationVC: UIViewController {
             locationManager.startUpdatingLocation()
         }
     }
-    
+    /**
+     Creates a method for when user tap long press on map and getting location details like address,longitude and latitude.
+     
+     - Parameter recipient:
+     
+     - Throws: If location service doesn't enable or user don't allow to access then we get error and can't set the current location on the map
+     
+     - Returns: Location Model object with location details
+     */
     @objc func userPerformedLongPress(gesture: UIGestureRecognizer) {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
@@ -73,7 +89,15 @@ class LocationVC: UIViewController {
         }
         
     }
-    
+    /**
+     Creates a method for save location in core data.
+     
+     - Parameter recipient:
+     
+     - Throws: If core data persistence is not available then app will get expection
+     
+     - Returns: 
+     */
     @IBAction func btnSavePressed(){
         CoreDataManager.saveAddressData(locationData: location)
         

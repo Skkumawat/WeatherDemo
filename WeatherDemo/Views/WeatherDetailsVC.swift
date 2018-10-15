@@ -31,7 +31,15 @@ class WeatherDetailsVC: UIViewController {
         loadDatafromWeatherAPI()
         // Do any additional setup after loading the view.
     }
-    
+    /**
+     Creates a method for setup UI of TableView.
+     
+     - Parameter recipient:
+     
+     - Throws:
+     
+     - Returns:
+     */
     func setUpTableUI()  {
         tblCityDetail.estimatedRowHeight = 44
         tblCityDetail.separatorStyle = .singleLine
@@ -44,15 +52,23 @@ class WeatherDetailsVC: UIViewController {
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
         loadDatafromWeatherAPI()
     }
-    
+    /**
+     Creates a method to fetch data from weather API.
+     
+     - Parameter recipient:
+     
+     - Throws:
+     
+     - Returns:
+     */
     func loadDatafromWeatherAPI() {
-        Utility.ShowProgressHud(Onview: self.view)
+        Utility.ShowProgressHud(onView: self.view)
         
         serviceManager.callEndPointForToday(daysSeg.selectedSegmentIndex == 0 ? true : false, lat: "\(locationData.latitude)", long: "\(locationData.longitude)") { [weak self] (response) in
             
             guard let strongSelf = self else { return }
             
-            Utility.HideProgressHud(Onview: strongSelf.view)
+            Utility.HideProgressHud(onView: strongSelf.view)
             
             switch response {
             case .success(let result):
@@ -75,10 +91,10 @@ class WeatherDetailsVC: UIViewController {
                 
                 break
             case .failure:
-                Utility.showAlert(strMessage: server_error, Onview: strongSelf)
+                Utility.showAlert(message: server_error, onView: strongSelf)
                 break
             case .notConnectedToInternet:
-                Utility.showAlert(strMessage: internet_error, Onview: strongSelf)
+                Utility.showAlert(message: internet_error, onView: strongSelf)
                 break
             }
             
@@ -101,7 +117,7 @@ class WeatherDetailsVC: UIViewController {
      */
     
 }
-
+// Mark UITableView delegate and datasource methods
 extension WeatherDetailsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

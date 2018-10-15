@@ -24,21 +24,25 @@ class SettingsVC: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    // Mark method of UISegment change
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
         
     }
+    
+    // Mark method of UIswitch value change
     @IBAction func switchControlChanged(_ sender: UISwitch) {
         if sender.isOn == true {
-            //Delete all bookmarked cites
+            //Delete all saved bookmarked cites from core data
             CoreDataManager.deleteAllCitiesData(entityName: "Address", completionHandler: { success in
                 if success {
                     self.switchForReset.isOn = false
-                    Utility.showAlert(strMessage: "All bookmark cities deleted successfully", Onview: self)
+                    
+                    Utility.showAlert(message: "All bookmark cities deleted successfully", onView: self)
+                    
                     self.tabBarController?.selectedIndex = 0
                 }
                 else{
-                    Utility.showAlert(strMessage: "All bookmark cities are not deleted, Please try again!", Onview: self)
+                    Utility.showAlert(message: "All bookmark cities are not deleted, Please try again!", onView: self)
                 }
             })
         }
