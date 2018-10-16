@@ -7,8 +7,9 @@
 //
 
 import XCTest
+@testable import WeatherDemo
 
-class BaseService: XCTestCase {
+class BaseServiceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,16 +21,41 @@ class BaseService: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testWeatherApi() {
+        
+        let serviceManager = BaseService()
+        let location = LocationModel()
+        let promise = expectation(description: "Completion handler invoked")
+        var statusCode: Int?
+        
+        
+        location.address = "Ahmedabad"
+        location.latitude = 23.0225
+        location.longitude = 72.5714
+        
+        serviceManager.callEndPointForToday(true , lat: "\(location.latitude)", long: "\(location.longitude)") { (response) in
+            
+            switch response {
+            case .success(let result):
+                print("\(result.description)")
+                statusCode = 200
+                promise.fulfill()
+                break
+            case .failure:
+                statusCode = 400
+                promise.fulfill()
+                break
+            case .notConnectedToInternet:
+                statusCode = 400
+                promise.fulfill()
+                break
+            }
+            
         }
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertEqual(statusCode, 200)
+        
     }
     
 }

@@ -118,23 +118,33 @@ extension HomeVC : UISearchBarDelegate {
         let searchTxt = searchBar.text?.trim()
         searchBar.text = searchText
         isSearch = true
-        getSearchData(search: searchTxt ?? "")
+        performSearch(withSearchString: searchTxt ?? "")
     }
     
-    func getSearchData(search: String) {
+    fileprivate func performSearch(withSearchString searchString:String) {
+        
         searchLocations.removeAll()
-        for model in locations {
-            if search.count == 0 {
-                searchLocations.append(model)
-            }else if search.count > 0 {
-                if model.address.lowercased().range(of: search.lowercased()) != nil  {
-                    searchLocations.append(model)
-                }
-            }
-        }
+        searchLocations.append(contentsOf: getSearchData(search: searchString))
         DispatchQueue.main.async {
             self.tblCities.reloadData()
         }
+    }
+    
+    func getSearchData(search: String) -> [LocationModel] {
+        
+        var searchResult = [LocationModel]()
+        
+        for model in locations {
+            if search.count == 0 {
+                searchResult.append(model)
+            }else if search.count > 0 {
+                if model.address.lowercased().range(of: search.lowercased()) != nil  {
+                    searchResult.append(model)
+                }
+            }
+        }
+        
+        return searchResult
     }
 }
 // Mark UITableView delegate and datasource methods
